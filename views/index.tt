@@ -1,0 +1,74 @@
+<% USE date %>
+<% USE timesince = TimeSince %>
+
+<table id="services" class="data">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <% FOR day IN days %>
+      <% IF day.today %>
+      <th class="today">Current</th>
+      <% ELSE %>
+      <th><% date.format(time = day.date, format = "%e %b") %></th>
+      <% END %>
+      <% END %>
+  </thead>
+
+  <tbody>
+    <% FOR service IN services %>
+    <tr id="<% service.id %>">
+      <td>
+        <a href="<% service.url %>"><% service.name %></a>
+      </td>
+      <% FOR h IN service.history %>
+      <% IF h.today %>
+      <td class="status highlight">
+      <% ELSE %>
+      <td class="status">
+      <% END %>
+        <% IF h.info %>
+        <a href="/services/<% service.id %>/<% h.date %>">
+          <i class="status-icon-overlay status-info icon-info-sign"></i>
+        <% END %>
+          <i title="<% h.status.name %>" class="status-icon status-<% h.status.id %> icon-<% h.status.icon %>"></i>
+        <% IF h.info %>
+        </a>
+        <% END %>
+      </td>
+      <% END %>
+    <% END %>
+  </tbody>
+</table>
+
+<% IF events.size %>
+<div id="events">
+    <h4>Recent events</h4>
+    <table class="data" cellpadding="10">
+    <thead>
+        <tr>
+        <th class="service-header">Service</th>
+        <th class="time-header">Time</th>
+        <th class="status-header">Status</th>
+        <th class="status-header">Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% FOR e IN events %>
+        <tr>
+        <td class="service"><a href="<% e.service.url %>"><% e.service.name %></a></td>
+        <td class="time">
+          <a href="http://www.timeanddate.com/worldclock/fixedtime.html?<% date.format(time = e.timestamp, format = "year=%Y&month=%m&day=%d&hour=%H&min=%M&p1=0") %>">
+            <% date.format(time = e.timestamp, format = "%e %h %Y %H:%M:%S") %> UTC
+          </a><br>
+          (<% timesince.timesince(e.timestamp) %>)
+        </td>
+        <td class="status highlight" title="<% e.status.name %>"><i class="status-icon status-<% e.status.id %> icon-<% e.status.icon %>"></i></td>
+        <td><% e.message %></td>
+        </tr>
+        <% END %>
+    </tbody>
+    </table>
+</div>
+<% END %>
+
+<% INCLUDE "legend.tt" %>

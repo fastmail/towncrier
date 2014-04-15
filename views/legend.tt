@@ -1,0 +1,10 @@
+<div id="legend">
+  <h4> Status Legend </h4>
+  <ul>
+    <% FOR status IN statuses %>
+    <li>
+      <p title="<% status.name %>"><i class="status-icon status-<% status.id %> icon-<% status.icon %>"></i> <% status.description %>
+    </li>
+    <% END %>
+  </ul>
+</div>

@@ -1,0 +1,27 @@
+# You probably want to authenticate access to your admin API
+# see perldoc Dancer::Plugin::Auth::Basic for details
+plugins:
+  "Auth::Basic":
+    paths:
+      "/admin/api":
+        realm: api
+        user: admin
+        password: secret
+
+towncrier:
+  # database file
+  database: towncrier.sqlite
+
+  # title used
+  title: "Service status"
+
+  # default service status in the index
+  default_status: "up"
+
+# Don't change these unless you're doing something special
+appname: "towncrier"
+charset: "UTF-8"
+layout: "main"
+template: "template_toolkit"
+serializer: "JSON"
+

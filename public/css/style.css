@@ -1,0 +1,215 @@
+html, body{
+  height: 100%;
+}
+
+body{
+  font:12px helvetica,sans-serif;
+  background: rgb(247, 247, 247);
+}
+
+a {
+  color:#333;
+}
+
+a:hover {
+  color:#666;
+}
+
+em {
+  font-style: italic;
+}
+
+#wrapper {
+  width: 900px; min-height: 100%;
+  height: auto !important; height: 100%;
+  margin: 0 auto -3em;
+}
+
+h1 {font-size: 32px; font-weight: bold;}
+h2 {font-size: 32px; font-weight: bold;}
+h3 {font-size: 24px; font-weight: bold;}
+h3.date-range {color: #999; margin-top: 20px}
+
+#header {height: 70px;}
+
+#header h1 {margin: 15px; float: left; height: 40px; line-height: 40px;}
+#header h1 span {font-weight: normal;}
+#header h2 {margin: 15px 0; float: left; line-height: 67px;}
+#logo { height: 54px; width: 54px; float: left; margin: 8px 0;}
+
+.actions {
+    float: right;
+    margin-top: 20px;
+    font-size: larger;
+}
+.sub-actions {
+    margin-top: 0;
+    font-size: inherit;
+}
+
+#content {
+  border: 1px solid rgb(228, 228, 228);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+}
+
+.data {
+  width: 100%;
+  border-spacing:10;
+  font-size: 1.1em;
+  border-collapse: separate;
+  border-left:1px solid #E4E4E4;
+  border-top:1px solid #E4E4E4;
+}
+
+.data a {
+  text-decoration: underline;
+}
+
+.data thead {
+  background: #EEEEEE;
+}
+
+.data th {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+}
+
+.data tr {
+  font-size: 16px;
+}
+
+.data td {
+  padding: 10px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+  vertical-align: middle;
+  height: 25px;
+}
+
+
+.data .time { width: 20%; font-size: 12px; }
+.data .today { background: rgb(228, 228, 228); }
+.data .highlight { background: rgb(247, 247, 247); }
+.data .status, .data .date, .data .today { text-align: center; }
+.data .action { width: 5px; }
+
+.data .status img {
+  max-width: 20px;
+}
+
+#services {
+  border-left: none;
+  border-top: none;
+}
+
+#services th {
+  font-size: 20px;
+}
+
+#services th:first-child {
+  text-align: left;
+}
+
+#services thead {
+  background: none;
+}
+
+#events { margin-top: 20px; }
+#events h4 { color: #999; font-size: 18px; margin: 20px 0 5px 0;}
+#events .service { width: 15% }
+#events .status { width: 10%; }
+#events .time { text-align:  center; }
+
+.billboard {
+  padding: 40px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.billboard-up {
+  border: 1px solid #86c440;
+  background: #daf1b8;
+}
+
+.billboard-down {
+  border: 1px solid #c48640;
+  background: #f1dab8;
+}
+
+.billboard-warning {
+  border: 1px solid #c48600;
+  background: #f1caa0;
+}
+
+
+#billboard img, #billboard p {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#legend h4 { color: #999; font-size: 18px; margin: 20px 0 5px 0;}
+#legend ul {font-size: 12px}
+#legend li {margin-right: 10px; display: inline-block;}
+#legend img, #legend p {vertical-align: middle; display: inline-block;}
+
+#footer, #push {height: 3em;}
+#footer {width: 900px; margin: auto;}
+#footer ul {padding: 0px 0px;}
+#footer ul li {display: inline-block;}
+#footer ul.left { float: left;}
+#footer ul.left li {margin-right: 7px}
+#footer ul.right { float: right;}
+#icons, #icons a{ color: #ccc; }
+
+td.status a{position: relative;}
+td.status a .information {position: absolute; top: 0px; left: 1px; z-index: 500;}
+
+#powered {
+    font-family: monospace;
+    font-size: 14px;
+}
+#powered a {
+    text-decoration: none;
+}
+#powered img {
+    width: 26px;
+    height: 26px;
+}
+
+.status a {
+    text-decoration: none;
+}
+
+.status-icon {
+    font-size: larger;
+    text-shadow: 1px 1px rgba(0,0,0,0.2);
+}
+.status-icon.status-up {
+    color: #66cc66;
+}
+.status-icon.status-down {
+    color: #cc6666;
+}
+.status-icon.status-warning {
+    color: #ff6600;
+}
+
+.status-info {
+    color: #0000ff;
+}
+
+.status-icon-overlay {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    font-size: x-small;
+    text-shadown: 1px 1px rgba(0,0,0,0.2);
+    z-index: 100;
+}

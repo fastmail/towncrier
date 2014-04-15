@@ -1,0 +1,53 @@
+<% USE dt = date %>
+<% USE timesince = TimeSince %>
+
+<h2><% service.name %></h2>
+<div class="actions sub-actions">
+  <a href="/feed/services/<% service.id %>" class="action" title="Service RSS feed"><i class="icon-rss"></i> Feed</a>
+</div>
+<p id="service-description"> <% service.description %></p>
+
+<% IF date %>
+<h3 class="date-range">
+  <% dt.format(time = date, format = "%e %h %Y") %>
+</h3>
+<% ELSE %>
+<section class="billboard billboard-<% service.status.id %>">
+  <p title="<% service.status.name %>"><i class="status-icon status-<% service.status.id %> icon-<% service.status.icon %>"></i>
+  <% service.status.description %></p>
+</section>
+<% END %>
+
+<% IF events.size %>
+<table id="events" class="data" cellpadding="10">
+  <thead>
+    <tr>
+      <th class="time-header">Time</th>
+      <th class="status-header">Status</th>
+      <th class="status-header">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% FOR e IN events %>
+    <tr>
+      <td class="time">
+        <a href="http://www.timeanddate.com/worldclock/fixedtime.html?<% dt.format(time = e.timestamp, format = "year=%Y&month=%m&day=%d&hour=%H&min=%M&p1=0") %>">
+          <% dt.format(time = e.timestamp, format = "%e %h %Y %H:%M:%S") %> UTC
+        </a><br>
+        (<% timesince.timesince(e.timestamp) %>)
+      </td>
+      <td class="status highlight" title="<% e.status.name %>"><i class="status-icon status-<% e.status.id %> icon-<% e.status.icon %>"></i></td>
+      <td><% e.message %></td>
+    </tr>
+    <% END %>
+  </tbody>
+</table>
+<% ELSE %>
+<% IF date %>
+<section id="noevents">
+  <h4>No events.</h4>
+</section>
+<% END %>
+<% END %>
+
+<% INCLUDE "legend.tt" %>
