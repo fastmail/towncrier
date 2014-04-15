@@ -29,6 +29,9 @@ I'm assuming you have Perl. You'll need the following packages installed as well
 - DateTime::Format::DateParse
 - Template
 
+NOTE: Search::GIN has a bug. A fix has been submitted. Until it lands, install
+from https://github.com/robn/search-gin/tree/manual-consistent.
+
 That's enough to get running, though for production you'll probably want a
 better web server than Dancer's development server. I like Starman. Read
 Dancer::Deployment for more options.
