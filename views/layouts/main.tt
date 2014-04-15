@@ -19,7 +19,7 @@
           <a href="/feed" class="action" title="RSS feed"><i class="icon-rss"></i> Feed</a>
         </div>
         <a href="/">
-          <img id="logo" src="/images/bell/bell-256.png" alt="Logo"/>
+          <img id="logo" src="/images/logo.png" alt="Logo"/>
           <h1 id="title"><% title %></h1>
         </a>
       </div>

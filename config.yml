@@ -3,7 +3,7 @@ towncrier:
   database: towncrier.sqlite
 
   # title used
-  title: "Service status"
+  title: "FastMail status"
 
   # default service status in the index
   default_status: "up"
