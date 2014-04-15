@@ -106,6 +106,13 @@ sub service {
         { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } }
     );
 
+    my $default_status = $db->match(
+        class => "TownCrier::Data::Status",
+        id => config->{towncrier}->{default_status}
+    )->[0];
+
+    $service->status($default_status) unless $service->status;
+
     @$events = grep { $_->timestamp->ymd eq $date->ymd } @$events if $date;
 
     @$events = splice @$events, 0, 5;
