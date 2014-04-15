@@ -1,7 +1,7 @@
 package TownCrier::Handler::API::Service;
 
 use TownCrier::Data;
-use TownCrier::Util qw(slugify);
+use Text::Slugify qw(slugify);
 use Dancer qw(params status var);
 
 sub list {

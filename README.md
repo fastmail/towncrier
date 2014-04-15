@@ -28,6 +28,7 @@ I'm assuming you have Perl. You'll need the following packages installed as well
 - DateTime::Format::ISO8601
 - DateTime::Format::DateParse
 - Template
+- Text::Slugify
 
 NOTE: Search::GIN has a bug. A fix has been submitted. Until it lands, install
 from https://github.com/robn/search-gin/tree/manual-consistent.
