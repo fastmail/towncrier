@@ -16,6 +16,12 @@ sub post {
     return status 'bad_request' unless @params == 2;
     my ($name, $description) = @params;
 
+    my $group;
+    if (exists params->{group}) {
+        $group = $db->match(class => "TownCrier::Data::Group", id => params->{group})->[0];
+        return status 'not_found' unless $group;
+    }
+
     my $id = slugify($name);
 
     my $service = $db->match(class => "TownCrier::Data::Service", id => $id)->[0];
@@ -25,6 +31,7 @@ sub post {
         id => $id,
         name => $name,
         description => $description,
+        defined $group ? (group => $group) : (),
     );
     $db->store($service);
 

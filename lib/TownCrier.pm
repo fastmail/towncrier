@@ -35,6 +35,12 @@ post "/statuses"         => \&TownCrier::Handler::API::Status::post;
 get  "/statuses/:status" => \&TownCrier::Handler::API::Status::get;
 del  "/statuses/:status" => \&TownCrier::Handler::API::Status::delete;
 
+get  "/groups"                 => \&TownCrier::Handler::API::Group::list;
+post "/groups"                 => \&TownCrier::Handler::API::Group::post;
+get  "/groups/:group"          => \&TownCrier::Handler::API::Group::get;
+del  "/groups/:group"          => \&TownCrier::Handler::API::Group::delete;
+get  "/groups/:group/services" => \&TownCrier::Handler::API::Group::list_services;
+
 get  "/services/:service/events"        => \&TownCrier::Handler::API::Event::list;
 post "/services/:service/events"        => \&TownCrier::Handler::API::Event::post;
 get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
@@ -46,6 +52,8 @@ get  "/services"                        => \&TownCrier::Handler::API::Service::l
 get  "/services/:service"               => \&TownCrier::Handler::API::Service::get;
 get  "/statuses"                        => \&TownCrier::Handler::API::Status::list;
 get  "/statuses/:status"                => \&TownCrier::Handler::API::Status::get;
+get  "/groups"                          => \&TownCrier::Handler::API::Group::list;
+get  "/groups/:group"                   => \&TownCrier::Handler::API::Group::get;
 get  "/services/:service/events"        => \&TownCrier::Handler::API::Event::list;
 get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
 

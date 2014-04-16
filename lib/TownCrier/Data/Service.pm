@@ -13,12 +13,15 @@ has description => ( is => 'rw', isa => Str, required => 1);
 has status => ( is => 'rw', isa => class_type("TownCrier::Data::Status") );
 has event => ( is => 'rw', isa => class_type("TownCrier::Data::Event") );
 
+has group => ( is => 'rw', isa => class_type("TownCrier::Data::Group") );
+
 sub url { "/services/".shift->id }
 
 sub extract_index {
     my ($self) = @_;
     return {
-        id => $self->id,
+        id    => $self->id,
+        $self->group ? (group => $self->group->id) : (),
     };
 }
 
@@ -31,6 +34,7 @@ sub rest {
         description  => $self->description,
         status       => $self->status ? $self->status->rest : undef,
         event        => $self->event ? $self->event->rest : undef,
+        group        => $self->group ? $self->group->rest : undef,
     };
 }
 
