@@ -32,8 +32,10 @@ sub post {
         params->{timestamp} ? (timestamp => DateTime::Format::ISO8601->parse_datetime(params->{timestamp})) : (),
     );
 
-    $service->event($event);
-    $service->status($status);
+    if (!$service->event || $service->event->timestamp lt $event->timestamp) {
+        $service->event($event);
+        $service->status($status);
+    }
 
     $db->txn_do(sub {
         $db->store($event);
