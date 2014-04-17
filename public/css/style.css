@@ -26,9 +26,12 @@ em {
 }
 
 h1 {font-size: 32px; font-weight: bold;}
-h2 {font-size: 32px; font-weight: bold;}
+h2 {font-size: 26px; font-weight: bold;}
 h3 {font-size: 24px; font-weight: bold;}
 h3.date-range {color: #999; margin-top: 20px}
+
+h2.group-name {color: #666; margin-bottom: 10px}
+h2.group-name a { color: inherit; text-decoration: none; }
 
 #header {height: 70px;}
 
@@ -103,20 +106,21 @@ h3.date-range {color: #999; margin-top: 20px}
   max-width: 20px;
 }
 
-#services {
+.services {
   border-left: none;
   border-top: none;
+  margin-bottom: 10px;
 }
 
-#services th {
+.services th {
   font-size: 20px;
 }
 
-#services th:first-child {
+.services th:first-child {
   text-align: left;
 }
 
-#services thead {
+.services thead {
   background: none;
 }
 

@@ -1,7 +1,13 @@
 <% USE date %>
 <% USE timesince = TimeSince %>
 
-<table id="services" class="data">
+<% FOR group_id IN grouped_services.keys().sort() %>
+
+<% IF group_id %>
+<h2 class="group-name"><a href="<% groups.$group_id.url %>"><% groups.$group_id.name %></a></h2>
+<% END %>
+
+<table class="services data">
   <thead>
     <tr>
       <th>Service</th>
@@ -15,7 +21,7 @@
   </thead>
 
   <tbody>
-    <% FOR service IN services %>
+    <% FOR service IN grouped_services.$group_id %>
     <tr id="<% service.id %>">
       <td>
         <a href="<% service.url %>"><% service.name %></a>
@@ -39,6 +45,8 @@
     <% END %>
   </tbody>
 </table>
+
+<% END %>
 
 <% IF events.size %>
 <div id="events">

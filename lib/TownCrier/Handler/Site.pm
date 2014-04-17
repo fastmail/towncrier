@@ -16,7 +16,14 @@ sub index {
 
     my $statuses = $db->match(class => "TownCrier::Data::Status");
 
-    my $services = $db->match(class => "TownCrier::Data::Service");
+    my $group_id;
+    if (params->{group}) {
+        my $group = $db->match(class => "TownCrier::Data::Group", id => params->{group})->[0];
+        return status 'not_found' unless $group;
+        $group_id = $group->id;
+    }
+
+    my $services = $db->match(class => "TownCrier::Data::Service", $group_id ? (group => $group_id) : ());
 
     my $default_status = $db->match(
         class => "TownCrier::Data::Status",
@@ -31,9 +38,13 @@ sub index {
             map { { date => $day->add({ days => -1 })->clone } } (1..5) );
     };
 
-    my @all_events;
+    my $groups = { map { $_->id => $_ } @{$db->match(class => "TownCrier::Data::Group")} };
 
+    my @all_events;
+    my %grouped_services;
     for my $service (@$services) {
+        push @{$grouped_services{$service->group ? $service->group->id : ""}}, $service;
+
         my $events = [
             @{$db->match(
                 class => "TownCrier::Data::Event", service => $service->id,
@@ -85,6 +96,8 @@ sub index {
         statuses => $statuses,
         services => $services,
         events => \@all_events,
+        groups => $groups,
+        grouped_services => \%grouped_services,
     };
 }
 

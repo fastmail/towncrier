@@ -17,6 +17,7 @@ hook before => sub {
 
 get "/"                          => \&TownCrier::Handler::Site::index;
 get "/services/:service/?:date?" => \&TownCrier::Handler::Site::service;
+get "/groups/:group"             => \&TownCrier::Handler::Site::index;
 
 prefix "/feed";
 
