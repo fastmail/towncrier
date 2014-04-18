@@ -47,6 +47,11 @@ post "/services/:service/events"        => \&TownCrier::Handler::API::Event::pos
 get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
 del  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::delete;
 
+get  "/notices"         => \&TownCrier::Handler::API::Notice::list;
+post "/notices"         => \&TownCrier::Handler::API::Notice::post;
+get  "/notices/:notice" => \&TownCrier::Handler::API::Notice::get;
+del  "/notices/:notice" => \&TownCrier::Handler::API::Notice::delete;
+
 prefix "/api/v1";
 
 get  "/services"                        => \&TownCrier::Handler::API::Service::list;
@@ -57,5 +62,7 @@ get  "/groups"                          => \&TownCrier::Handler::API::Group::lis
 get  "/groups/:group"                   => \&TownCrier::Handler::API::Group::get;
 get  "/services/:service/events"        => \&TownCrier::Handler::API::Event::list;
 get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
+get  "/notices"                         => \&TownCrier::Handler::API::Notice::list;
+get  "/notices/:notice"                 => \&TownCrier::Handler::API::Notice::get;
 
 1;
