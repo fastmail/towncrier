@@ -30,7 +30,8 @@ sub index {
         id => config->{towncrier}->{default_status}
     )->[0];
 
-    my $today = DateTime->today;
+    my $now = DateTime->now;
+    my $today = $now->clone->truncate(to => "day" );
 
     my @days = do {
         my $day = $today->clone;
@@ -90,6 +91,11 @@ sub index {
 
     @all_events = sort { $b->{timestamp} cmp $a->{timestamp} } splice @all_events, 0, 10;
 
+
+    my $notices = [ grep { DateTime->compare($now, $_->expiry) < 0 }
+                    @{$db->match(class => "TownCrier::Data::Notice",
+                                 { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } })} ];
+
     template "index" => {
         _template_params,
         days => \@days,
@@ -98,6 +104,7 @@ sub index {
         events => \@all_events,
         groups => $groups,
         grouped_services => \%grouped_services,
+        notices => $notices,
     };
 }
 
