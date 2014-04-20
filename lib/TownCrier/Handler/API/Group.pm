@@ -16,7 +16,7 @@ sub post {
     return status 'bad_request' unless @params == 1;
     my ($name) = @params;
 
-    my $id = slugify($name);
+    my $id = slugify(params->{id} // $name);
 
     my $group = $db->match(class => "TownCrier::Data::Group", id => $id)->[0];
     return status 'conflict' if $group;

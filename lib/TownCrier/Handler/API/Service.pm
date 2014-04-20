@@ -22,7 +22,7 @@ sub post {
         return status 'not_found' unless $group;
     }
 
-    my $id = slugify($name);
+    my $id = slugify(params->{id} // $name);
 
     my $service = $db->match(class => "TownCrier::Data::Service", id => $id)->[0];
     return status 'conflict' if $service;
