@@ -92,7 +92,7 @@ sub index {
     @all_events = sort { $b->{timestamp} cmp $a->{timestamp} } splice @all_events, 0, 10;
 
 
-    my $notices = [ grep { DateTime->compare($now, $_->expiry) < 0 }
+    my $notices = [ grep { !$_->expired }
                     @{$db->match(class => "TownCrier::Data::Notice",
                                  { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } })} ];
 

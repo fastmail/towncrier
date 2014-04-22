@@ -11,6 +11,11 @@ has message => ( is => 'rw', isa => Str, required => 1);
 has timestamp => ( is => 'ro', isa => class_type("DateTime"), default => sub { DateTime->now } );
 has expiry => ( is => 'ro', isa => class_type("DateTime"), default => sub { DateTime->now->add(days => 3) } );
 
+sub expired {
+    my ($self) = @_;
+    return DateTime->compare(DateTime->now, $self->expiry) >= 0;
+}
+
 has id => ( is => 'lazy', isa => Str );
 sub _build_id { shift->generate_uuid };
 sub kiokudb_object_id { shift->id };
