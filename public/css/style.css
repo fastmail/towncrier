@@ -101,6 +101,7 @@ h2.group-name a { color: inherit; text-decoration: none; }
 .data .highlight { background: rgb(247, 247, 247); }
 .data .status, .data .date, .data .today { text-align: center; }
 .data .action { width: 5px; }
+.data .expired { text-decoration: line-through; }
 
 #notices .status { width: 10%; }
 #notices { margin-bottom: 20px; }

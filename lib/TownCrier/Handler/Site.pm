@@ -146,4 +146,15 @@ sub service {
     };
 }
 
+sub notices {
+    my $db = var 'db';
+    my $notices = $db->match(class => "TownCrier::Data::Notice",
+                             { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } });
+
+    template "notices", {
+        _template_params,
+        notices => $notices,
+    };
+}
+
 1;
