@@ -1,7 +1,17 @@
 <% USE date %>
 <% USE timesince = TimeSince %>
 
-<% INCLUDE "notices.tt" %>
+<% IF notices.size > 0 %>
+<h2 class="group-name">Notices</h2>
+<table id="notices" class="data">
+  <tbody>
+<% FOR notice IN notices %>
+    <td class="date"><% date.format(time = notice.timestamp, format = "%e %B") %></td>
+    <td><% notice.message %></td>
+  </tbody>
+<% END %>
+</table>
+<% END %>
 
 <% FOR group_id IN grouped_services.keys().sort() %>
 
