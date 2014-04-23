@@ -1,28 +1,18 @@
 <% USE date %>
-<% USE timesince = TimeSince %>
 
 <% IF notices.size > 0 %>
 <h2 class="group-name">Notices</h2>
 <table id="notices" class="data">
-  <thead>
-    <tr>
-      <th class="time-header">Time</th>
-      <th class="status-header">Status</th>
-      <th class="status-header">Message</th>
-    </tr>
-  </thead>
   <tbody>
 <% FOR notice IN notices %>
-    <td class="time">
-      <a href="http://www.timeanddate.com/worldclock/fixedtime.html?<% date.format(time = notice.timestamp, format = "year=%Y&month=%m&day=%d&hour=%H&min=%M&p1=0") %>">
-      <% date.format(time = notice.timestamp, format = "%e %h %Y %H:%M:%S") %> UTC
-      </a><br>
-      (<% timesince.timesince(notice.timestamp) %>)
-    </td>
-    <td class="status highlight" title="<% e.status.name %>"><i class="status-icon status-info icon-info-sign %>"></i></td>
+    <td class="date"><% date.format(time = notice.timestamp, format = "%e %B") %></td>
     <td class="<% IF notice.expired %>expired<% END %>"><% notice.message %></td>
   </tbody>
 <% END %>
 </table>
+<% ELSE %>
+<section class="billboard billboard-notice">
+  <p>No notices</p>
+</section>
 <% END %>
 

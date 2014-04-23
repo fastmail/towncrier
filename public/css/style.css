@@ -106,9 +106,7 @@ h2.group-name a { color: inherit; text-decoration: none; }
 
 #notices { margin-bottom: 20px; background-color: #eeeeff; }
 
-.data .status img {
-  max-width: 20px;
-}
+.data .status { max-width: 20px; }
 
 .services {
   border-left: none;
@@ -155,6 +153,10 @@ h2.group-name a { color: inherit; text-decoration: none; }
   background: #f1caa0;
 }
 
+.billboard-notice {
+  border: 1px solid #ccccdd;
+  background: #eeeeff;
+}
 
 #billboard img, #billboard p {
   display: inline-block;
