@@ -11,4 +11,6 @@ curl -u $AUTH -i http://localhost:3000/admin/api/v1/statuses -F name=Warning -F 
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/groups -F name=Primary -F description='Primary services'
 
 # And services
-curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=Website -F group=primary -F description='My website'
+curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=first -F group=primary -F description='My website' -F order=10
+curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=second -F group=primary -F description='My website' -F order=30
+curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=third -F group=primary -F description='My website' -F order=20

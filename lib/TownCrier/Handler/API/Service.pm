@@ -32,6 +32,7 @@ sub post {
         name => $name,
         description => $description,
         defined $group ? (group => $group) : (),
+        defined params->{order} ? (order => params->{order}) : (),
     );
     $db->store($service);
 

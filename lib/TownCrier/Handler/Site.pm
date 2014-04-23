@@ -23,7 +23,8 @@ sub index {
         $group_id = $group->id;
     }
 
-    my $services = $db->match(class => "TownCrier::Data::Service", $group_id ? (group => $group_id) : ());
+    my $services = $db->match(class => "TownCrier::Data::Service", $group_id ? (group => $group_id) : (),
+                              { sort => sub { my ($a, $b) = @_; $a->ordered_compare($b) } });
 
     my $default_status = $db->match(
         class => "TownCrier::Data::Status",
