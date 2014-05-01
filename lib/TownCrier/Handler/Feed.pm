@@ -16,10 +16,12 @@ sub index {
     create_feed(
         format => "RSS",
         title => "FastMail Status",
+        link => request->uri_base . request->path,
         entries => [ map { +{
             title => $_->service->name . " - " . $_->status->name,
             modified => DateTime::Format::ISO8601->parse_datetime($_->timestamp),
             content => $_->message,
+            id => $_->id,
         } } @events ],
     );
 }
