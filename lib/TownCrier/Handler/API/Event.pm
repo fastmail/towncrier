@@ -66,15 +66,15 @@ sub delete {
     my $service = $db->match(class => "TownCrier::Data::Service", id => params->{service})->[0];
     return status 'not_found' unless $service;
 
-    my $event = TownCrier::Data::Event->get_by_id($db, params->{event});
+    my $event = $db->match(class => "TownCrier::Data::Event", id => params->{event})->[0];
     return status 'not_found' unless $event;
 
     return status 'not_found' unless $service->id eq $event->service->id;
 
     $db->txn_do(sub {
         if ($service->event && $service->event->id eq $event->id) {
-            $service->event(undef);
-            $service->status(undef);
+            $service->clear_event;
+            $service->clear_status;
             $db->store($service);
         }
         $db->delete($event);

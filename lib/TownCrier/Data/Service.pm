@@ -12,8 +12,8 @@ has description => ( is => 'rw', isa => Str, required => 1);
 
 has order => ( is => 'rw', isa => Int, default => 0 );
 
-has status => ( is => 'rw', isa => class_type("TownCrier::Data::Status") );
-has event => ( is => 'rw', isa => class_type("TownCrier::Data::Event") );
+has status => ( is => 'rw', isa => class_type("TownCrier::Data::Status"), clearer => 'clear_status' );
+has event => ( is => 'rw', isa => class_type("TownCrier::Data::Event"), clearer => 'clear_event' );
 
 has group => ( is => 'rw', isa => class_type("TownCrier::Data::Group") );
 
