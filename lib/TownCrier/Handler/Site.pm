@@ -90,8 +90,8 @@ sub index {
         $service->{history} = [ reverse @history ];
     }
 
-    @all_events = sort { $b->{timestamp} cmp $a->{timestamp} } splice @all_events, 0, 10;
-
+    @all_events = sort { $b->ordered_compare($a) } @all_events;
+    @all_events = splice @all_events, 0, 10;
 
     my $notices = [ grep { !$_->expired }
                     @{$db->match(class => "TownCrier::Data::Notice",
