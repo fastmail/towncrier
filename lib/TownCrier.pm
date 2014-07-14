@@ -11,10 +11,23 @@ use TownCrier::Handler::API;
 use constant TOWNCRIER_DATABASE =>
     $ENV{TOWNCRIER_DATABASE} // config->{towncrier}->{database} // "towncrier.sqlite";
 
+use constant TOWNCRIER_ADMIN_USER =>
+    $ENV{TOWNCRIER_ADMIN_USER} // config->{towncrier}->{admin_user} // "admin";
+use constant TOWNCRIER_ADMIN_PASSWORD =>
+    $ENV{TOWNCRIER_ADMIN_PASSWORD} // config->{towncrier}->{admin_password} // "secret";
+
 hook before => sub {
     my $db = TownCrier::Model->new(dsn => "dbi:SQLite:dbname=".TOWNCRIER_DATABASE);
     var db => $db;
     var dbscope => $db->new_scope;
+};
+
+hook before => sub {
+    return unless request->path_info =~ m{^/admin/api/v1/};
+    auth_basic
+        realm    => 'api',
+        user     => TOWNCRIER_ADMIN_USER,
+        password => TOWNCRIER_ADMIN_PASSWORD;
 };
 
 get "/"                          => \&TownCrier::Handler::Site::index;
