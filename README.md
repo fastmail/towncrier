@@ -18,7 +18,7 @@ $ git clone http://github.com/robn/towncrier.git
 $ cd towncrier
 $ curl -L http://cpanmin.us | perl - Carton
 $ carton install
-$ carton exec plackup bin/app.psgi
+$ carton exec plackup bin/app.pl
 ```
 
 For production you'll need to know a little more about Perl webapp deployment.
