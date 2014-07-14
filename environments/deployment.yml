@@ -1,0 +1,20 @@
+# configuration file for deployment environment (eg docker)
+
+# only log warning and error messages
+log: "warning"
+
+# log message to a file in logs/
+logger: "console"
+
+# don't consider warnings critical
+warnings: 0
+
+# hide errors 
+show_errors: 0
+
+# cache route resolution for maximum performance
+route_cache: 1
+
+plack_middlewares:
+  -
+    - AccessLog
