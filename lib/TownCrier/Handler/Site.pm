@@ -5,9 +5,14 @@ use Dancer ':syntax';
 use DateTime;
 use DateTime::Format::DateParse;
 
+use constant TOWNCRIER_TITLE =>
+    $ENV{TOWNCRIER_TITLE} // config->{towncrier}->{title} // "";
+use constant TOWNCRIER_DEFAULT_STATUS =>
+    $ENV{TOWNCRIER_DEFAULT_STATUS} // config->{towncrier}->{default_status} // "up";
+
 sub _template_params {
     return (
-        config => config->{towncrier} // {}
+        title  => TOWNCRIER_TITLE,
     );
 }
 
@@ -28,7 +33,7 @@ sub index {
 
     my $default_status = $db->match(
         class => "TownCrier::Data::Status",
-        id => config->{towncrier}->{default_status}
+        id => TOWNCRIER_DEFAULT_STATUS,
     )->[0];
 
     my $now = DateTime->now;
@@ -129,7 +134,7 @@ sub service {
 
     my $default_status = $db->match(
         class => "TownCrier::Data::Status",
-        id => config->{towncrier}->{default_status}
+        id => TOWNCRIER_DEFAULT_STATUS,
     )->[0];
 
     $service->status($default_status) unless $service->status;

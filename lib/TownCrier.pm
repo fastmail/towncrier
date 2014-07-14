@@ -8,8 +8,11 @@ use TownCrier::Handler::Site;
 use TownCrier::Handler::Feed;
 use TownCrier::Handler::API;
 
+use constant TOWNCRIER_DATABASE =>
+    $ENV{TOWNCRIER_DATABASE} // config->{towncrier}->{database} // "towncrier.sqlite";
+
 hook before => sub {
-    my $db = TownCrier::Model->new( dsn => "dbi:SQLite:dbname=".(config->{towncrier}->{database} // "towncrier.sqlite") );
+    my $db = TownCrier::Model->new(dsn => "dbi:SQLite:dbname=".TOWNCRIER_DATABASE);
     var db => $db;
     var dbscope => $db->new_scope;
 };
