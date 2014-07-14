@@ -1,0 +1,17 @@
+requires 'Dancer';
+requires 'Dancer::Plugin::Auth::Basic';
+requires 'Dancer::Plugin::Feed';
+requires 'Moo';
+requires 'Types::Standard';
+requires 'Type::Utils';
+requires 'KiokuDB';
+requires 'KiokuDB::Backend::DBI';
+requires 'KiokuX::Model';
+requires 'DBD::SQLite';
+requires 'Search::GIN';
+requires 'DateTime';
+requires 'DateTime::Format::Human::Duration';
+requires 'DateTime::Format::ISO8601';
+requires 'DateTime::Format::DateParse';
+requires 'Template';
+requires 'Text::Slugify';

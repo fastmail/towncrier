@@ -10,33 +10,21 @@ A simple status dashboard.
 
 ## setup
 
-I'm assuming you have Perl. You'll need the following packages installed as well
+Getting started quickly is easy. Assuming you have a fairly recent Perl on your
+system:
 
-- Dancer
-- Dancer::Plugin::Auth::Basic
-- Dancer::Plugin::Feed
-- Moo
-- Types::Standard
-- Type::Utils
-- KiokuDB
-- KiokuDB::Backend::DBI
-- KiokuX::Model
-- DBD::SQLite
-- Search::GIN
-- DateTime
-- DateTime::Format::Human::Duration
-- DateTime::Format::ISO8601
-- DateTime::Format::DateParse
-- Template
-- Text::Slugify
+```bash
+$ git clone http://github.com/robn/towncrier.git
+$ cd towncrier
+$ curl -L http://cpanmin.us | perl - Carton
+$ carton install
+$ carton exec plackup bin/app.psgi
+```
 
-That's enough to get running, though for production you'll probably want a
-better web server than Dancer's development server. I like Starman. Read
-Dancer::Deployment for more options.
+For production you'll need to know a little more about Perl webapp deployment.
+Go and read the docs for Carton and Dancer::Deployment.
 
-Start it up:
-
-  $ ./bin/app.pl
+Dockerfile coming soon :)
 
 You need to install the initial statuses and services. Look at bin/fixtures.sh
 to get started.
@@ -45,7 +33,7 @@ There's some knobs you can twiddle in config.yml.
 
 ## demo
 
-FastMail are using this. See http://fastmailstatus.com/
+FastMail are using this. See http://www.fastmailstatus.com/
 
 ## credits and license
 
