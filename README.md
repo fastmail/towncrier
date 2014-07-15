@@ -17,7 +17,7 @@ system:
 $ git clone http://github.com/robn/towncrier.git
 $ cd towncrier
 $ curl -L http://cpanmin.us | perl - Carton
-$ carton install
+$ carton install --deployment
 $ carton exec plackup bin/app.pl
 ```
 
