@@ -3702,59 +3702,56 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0
       perl 5.006001
-  Search-GIN-0.08
-    pathname: D/DR/DRUOSO/Search-GIN-0.08.tar.gz
+  Search-GIN-0.09
+    pathname: E/ET/ETHER/Search-GIN-0.09.tar.gz
     provides:
-      Search::GIN 0.08
-      Search::GIN::Callbacks 0.08
-      Search::GIN::Core 0.08
-      Search::GIN::DelegateToIndexed 0.08
-      Search::GIN::Driver 0.08
-      Search::GIN::Driver::Hash 0.08
-      Search::GIN::Driver::Pack 0.08
-      Search::GIN::Driver::Pack::Delim 0.08
-      Search::GIN::Driver::Pack::IDs 0.08
-      Search::GIN::Driver::Pack::Length 0.08
-      Search::GIN::Driver::Pack::UUID 0.08
-      Search::GIN::Driver::Pack::Values 0.08
-      Search::GIN::Driver::TXN 0.08
-      Search::GIN::Extract 0.08
-      Search::GIN::Extract::Attributes 0.08
-      Search::GIN::Extract::Callback 0.08
-      Search::GIN::Extract::Class 0.08
-      Search::GIN::Extract::Delegate 0.08
-      Search::GIN::Extract::Multiplex 0.08
-      Search::GIN::Indexable 0.08
-      Search::GIN::Keys 0.08
-      Search::GIN::Keys::Deep 0.08
-      Search::GIN::Keys::Expand 0.08
-      Search::GIN::Keys::Join 0.08
-      Search::GIN::Query 0.08
-      Search::GIN::Query::Attributes 0.08
-      Search::GIN::Query::Class 0.08
-      Search::GIN::Query::Manual 0.08
-      Search::GIN::Query::Set 0.08
-      Search::GIN::SelfIDs 0.08
+      Search::GIN 0.09
+      Search::GIN::Callbacks 0.09
+      Search::GIN::Core 0.09
+      Search::GIN::DelegateToIndexed 0.09
+      Search::GIN::Driver 0.09
+      Search::GIN::Driver::Hash 0.09
+      Search::GIN::Driver::Pack 0.09
+      Search::GIN::Driver::Pack::Delim 0.09
+      Search::GIN::Driver::Pack::IDs 0.09
+      Search::GIN::Driver::Pack::Length 0.09
+      Search::GIN::Driver::Pack::UUID 0.09
+      Search::GIN::Driver::Pack::Values 0.09
+      Search::GIN::Driver::TXN 0.09
+      Search::GIN::Extract 0.09
+      Search::GIN::Extract::Attributes 0.09
+      Search::GIN::Extract::Callback 0.09
+      Search::GIN::Extract::Class 0.09
+      Search::GIN::Extract::Delegate 0.09
+      Search::GIN::Extract::Multiplex 0.09
+      Search::GIN::Indexable 0.09
+      Search::GIN::Keys 0.09
+      Search::GIN::Keys::Deep 0.09
+      Search::GIN::Keys::Expand 0.09
+      Search::GIN::Keys::Join 0.09
+      Search::GIN::Query 0.09
+      Search::GIN::Query::Attributes 0.09
+      Search::GIN::Query::Class 0.09
+      Search::GIN::Query::Manual 0.09
+      Search::GIN::Query::Set 0.09
+      Search::GIN::SelfIDs 0.09
     requirements:
       Carp 0
       Data::Stream::Bulk::Util 0
-      ExtUtils::MakeMaker 6.31
-      File::Find 0
-      File::Temp 0
+      ExtUtils::MakeMaker 6.30
       MRO::Compat 0
+      Module::Build::Tiny 0.036
       Moose 0.89
       Moose::Role 0
-      MooseX::Types::Set::Object 0
       Scalar::Util 0
       Scope::Guard 0
       Set::Object 0
       Test::Deep::NoTest 0
-      Test::More 0
-      Test::TempDir 0
       constant 0
       namespace::clean 0
-      ok 0
-      overload 0
+      perl 5.006
+      strict 0
+      warnings 0
   Set-Object-1.34
     pathname: R/RU/RURBAN/Set-Object-1.34.tar.gz
     provides:

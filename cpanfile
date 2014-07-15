@@ -8,7 +8,7 @@ requires 'KiokuDB';
 requires 'KiokuDB::Backend::DBI';
 requires 'KiokuX::Model';
 requires 'DBD::SQLite';
-requires 'Search::GIN';
+requires 'Search::GIN', '0.09';
 requires 'DateTime';
 requires 'DateTime::Format::Human::Duration';
 requires 'DateTime::Format::ISO8601';
