@@ -10,8 +10,17 @@ A simple status dashboard.
 
 ## setup
 
-Getting started quickly is easy. Assuming you have a fairly recent Perl on your
-system:
+### docker
+
+Docker is the easiest way to get things running:
+
+```bash
+$ docker run --name=towncrier -d -p 8080:8080 robn/towncrier
+```
+### Existing Perl with Carton
+
+If you have a system with a fairly recent Perl already, then Carton is your
+next best choice:
 
 ```bash
 $ git clone http://github.com/robn/towncrier.git
@@ -20,11 +29,15 @@ $ curl -L http://cpanmin.us | perl - Carton
 $ carton install --deployment
 $ carton exec plackup bin/app.pl
 ```
-
 For production you'll need to know a little more about Perl webapp deployment.
 Go and read the docs for Carton and Dancer::Deployment.
 
-Dockerfile coming soon :)
+### anything else
+
+Get Perl, get all the dependencies, run the program. This is the developer
+option, and you're expected to know what you're doing :)
+
+### first run
 
 You need to install the initial statuses and services. Look at bin/fixtures.sh
 to get started.
