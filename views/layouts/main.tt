@@ -20,6 +20,11 @@
           <h1 id="title"><% title %></h1>
         </a>
       </div>
+      <% if warning %>
+      <div id="warning">
+        <% warning %>
+      </div>
+      <% end %>
       <div id="content">
         <% content %>
       </div>

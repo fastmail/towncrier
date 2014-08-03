@@ -50,6 +50,15 @@ h2.group-name a { color: inherit; text-decoration: none; }
     font-size: inherit;
 }
 
+#warning {
+  border: 1px solid #b55;
+  background-color: #c66;
+  padding: 10px;
+  margin: 10px 0;
+  position: relative;
+  text-align: center;
+}
+
 #content {
   border: 1px solid rgb(228, 228, 228);
   background-color: #fff;
