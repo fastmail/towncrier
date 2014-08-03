@@ -1,0 +1,29 @@
+<form class='pure-form pure-form-stacked' method='POST'>
+  <div class='pure-g'>
+    <div class='pure-u-md-1-2'>
+      <label for='service'>Service</label>
+      <select class='pure-input-1' name='service' id='service'>
+          <% FOR service IN services %>
+          <option value="<% service.id %>"><% service.name %></option>
+          <% END %>
+      </select>
+    </div>
+    <div class='pure-u-md-1-2'>
+      <label for='status'>Status</label>
+      <select class='pure-input-1' name='status' id='status'>
+          <% FOR status IN statuses %>
+          <option <%- IF default_status.id == status.id %>selected <%- END %>value="<% status.id %>"><% status.name %></option>
+          <% END %>
+      </select>
+    </div>
+  </div>
+  <div class='pure-g'>
+    <div class='pure-u-1 pure-u-md-1-1'>
+      <label for='message'>Message</label>
+      <input class='pure-input-1' type='text' name='message' id='message'>
+    </div>
+  </div>
+  <div class='pure-g'>
+    <input class="pure-button pure-button-primary" type='submit' value='Post event'>
+  </div>
+</form>

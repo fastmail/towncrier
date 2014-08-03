@@ -22,7 +22,7 @@ em {
 #wrapper {
   width: 900px; min-height: 100%;
   height: auto !important; height: 100%;
-  margin: 0 auto -3em;
+  margin: 0 auto -5em;
 }
 
 h1 {font-size: 32px; font-weight: bold;}
@@ -177,7 +177,7 @@ h2.group-name a { color: inherit; text-decoration: none; }
 #legend li {margin-right: 10px; display: inline-block;}
 #legend img, #legend p {vertical-align: middle; display: inline-block;}
 
-#footer, #push {height: 3em;}
+#footer, #push {height: 5em;}
 #footer {width: 900px; margin: auto;}
 #footer ul {padding: 0px 0px;}
 #footer ul li {display: inline-block;}
@@ -185,6 +185,10 @@ h2.group-name a { color: inherit; text-decoration: none; }
 #footer ul.left li {margin-right: 7px}
 #footer ul.right { float: right;}
 #icons, #icons a{ color: #ccc; }
+
+#powered {
+    float: right;
+}
 
 td.status a{position: relative;}
 td.status a .information {position: absolute; top: 0px; left: 1px; z-index: 500;}

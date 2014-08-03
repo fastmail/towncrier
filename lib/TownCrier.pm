@@ -5,6 +5,7 @@ use Dancer::Plugin::Auth::Basic;
 
 use TownCrier::Model;
 use TownCrier::Handler::Site;
+use TownCrier::Handler::Admin;
 use TownCrier::Handler::Feed;
 use TownCrier::Handler::API;
 
@@ -23,7 +24,7 @@ hook before => sub {
 };
 
 hook before => sub {
-    return unless request->path_info =~ m{^/admin/api/v1/};
+    return unless request->path_info =~ m{^/admin/};
     auth_basic
         realm    => 'api',
         user     => TOWNCRIER_ADMIN_USER,
@@ -34,6 +35,11 @@ get "/"                          => \&TownCrier::Handler::Site::index;
 get "/services/:service/?:date?" => \&TownCrier::Handler::Site::service;
 get "/groups/:group"             => \&TownCrier::Handler::Site::index;
 get "/notices"                   => \&TownCrier::Handler::Site::notices;
+
+prefix "/admin";
+
+get  "/event" => \&TownCrier::Handler::Admin::Event::form;
+post "/event" => \&TownCrier::Handler::Admin::Event::post;
 
 prefix "/feed";
 

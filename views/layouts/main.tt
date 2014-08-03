@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/font-awesome.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/pure-min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/grids-responsive-min.css" type="text/css" />
   </head>
   <body>
     <div id="wrapper">
@@ -31,9 +33,10 @@
       <div id="push"></div>
     </div>
     <div id="footer">
-      <ul class="right">
-        <li id="powered"><a href="https://github.com/robn/towncrier"><img src="/images/bell/bell-26.png"/>towncrier</a></li>
-      </ul>
+      <a href="/admin/event">New event...</a>
+      <div id="powered">
+        <a href="https://github.com/robn/towncrier"><img src="/images/bell/bell-26.png"/>towncrier</a>
+      </div>
     </div>
   </body>
 </html>

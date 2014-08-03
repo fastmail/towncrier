@@ -57,6 +57,8 @@ general layout are lifted from it. So Copyright (c) 2010 Twilio Inc.
 
 Uses Font Awesome by Dave Gandy. http://fontawesome.io
 
+Uses Pure CSS by Yahoo!. http://purecss.io
+
 Bell icon by icons8.com
 
 I think that's everyone.
