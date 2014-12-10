@@ -17,12 +17,16 @@ sub index {
         format => "RSS",
         title => "FastMail Status",
         link => request->uri_base . request->path,
-        entries => [ map { +{
-            title => $_->service->name . " - " . $_->status->name,
-            modified => DateTime::Format::ISO8601->parse_datetime($_->timestamp),
-            content => $_->message,
-            id => $_->id,
-        } } @events ],
+        entries => [ map {
+            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp);
+            {
+                title => $_->service->name . " - " . $_->status->name,
+                issued => $dt,
+                modified => $dt,
+                content => $_->message,
+                id => $_->id,
+            }
+        } @events ],
     );
 }
 
@@ -39,11 +43,16 @@ sub service {
     create_feed(
         format => "RSS",
         title => "FastMail Status - ".$service->name,
-        entries => [ map { +{
-            title => $_->service->name . " - " . $_->status->name,
-            modified => DateTime::Format::ISO8601->parse_datetime($_->timestamp),
-            content => $_->message,
-        } } @events ],
+        entries => [ map {
+            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp);
+            {
+                title => $_->service->name . " - " . $_->status->name,
+                issued => $dt,
+                modified => $dt,
+                content => $_->message,
+                id => $_->id,
+            }
+        } @events ],
     );
 }
 

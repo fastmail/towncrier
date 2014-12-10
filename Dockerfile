@@ -5,7 +5,7 @@ MAINTAINER  Robert Norris rob@eatenbyagrue.org
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm Carton Starman
 
-RUN cachebuster=a45ed86 git clone http://github.com/robn/towncrier.git
+RUN cachebuster=5e4ae380 git clone http://github.com/robn/towncrier.git
 RUN cd towncrier && carton install --deployment
 
 EXPOSE 8080
