@@ -1,3 +1,4 @@
+requires 'Plack';
 requires 'Dancer';
 requires 'Dancer::Plugin::Auth::Basic';
 requires 'Dancer::Plugin::Feed';
