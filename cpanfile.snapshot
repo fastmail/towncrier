@@ -700,79 +700,79 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       namespace::clean 0.24
       perl 5.008001
-  Dancer-1.3138
-    pathname: Y/YA/YANICK/Dancer-1.3138.tar.gz
+  Dancer-1.3140
+    pathname: Y/YA/YANICK/Dancer-1.3140.tar.gz
     provides:
-      Dancer 1.3138
-      Dancer::App 1.3138
-      Dancer::Config 1.3138
-      Dancer::Config::Object 1.3138
-      Dancer::Continuation 1.3138
-      Dancer::Continuation::Halted 1.3138
-      Dancer::Continuation::Route 1.3138
-      Dancer::Continuation::Route::ErrorSent 1.3138
-      Dancer::Continuation::Route::FileSent 1.3138
-      Dancer::Continuation::Route::Forwarded 1.3138
-      Dancer::Continuation::Route::Passed 1.3138
-      Dancer::Continuation::Route::Templated 1.3138
-      Dancer::Cookie 1.3138
-      Dancer::Cookies 1.3138
-      Dancer::Deprecation 1.3138
-      Dancer::Engine 1.3138
-      Dancer::Error 1.3138
-      Dancer::Exception 1.3138
-      Dancer::Exception::Base 1.3138
-      Dancer::Factory::Hook 1.3138
-      Dancer::FileUtils 1.3138
-      Dancer::GetOpt 1.3138
-      Dancer::HTTP 1.3138
-      Dancer::Handler 1.3138
-      Dancer::Handler::Debug 1.3138
-      Dancer::Handler::PSGI 1.3138
-      Dancer::Handler::Standalone 1.3138
-      Dancer::Hook 1.3138
-      Dancer::Hook::Properties 1.3138
-      Dancer::Logger 1.3138
-      Dancer::Logger::Abstract 1.3138
-      Dancer::Logger::Capture 1.3138
-      Dancer::Logger::Capture::Trap 1.3138
-      Dancer::Logger::Console 1.3138
-      Dancer::Logger::Diag 1.3138
-      Dancer::Logger::File 1.3138
-      Dancer::Logger::Note 1.3138
-      Dancer::Logger::Null 1.3138
-      Dancer::MIME 1.3138
-      Dancer::ModuleLoader 1.3138
-      Dancer::Object 1.3138
-      Dancer::Object::Singleton 1.3138
-      Dancer::Plugin 1.3138
-      Dancer::Plugin::Ajax 1.3138
-      Dancer::Renderer 1.3138
-      Dancer::Request 1.3138
-      Dancer::Request::Upload 1.3138
-      Dancer::Response 1.3138
-      Dancer::Route 1.3138
-      Dancer::Route::Cache 1.3138
-      Dancer::Route::Registry 1.3138
-      Dancer::Serializer 1.3138
-      Dancer::Serializer::Abstract 1.3138
-      Dancer::Serializer::Dumper 1.3138
-      Dancer::Serializer::JSON 1.3138
-      Dancer::Serializer::JSONP 1.3138
-      Dancer::Serializer::Mutable 1.3138
-      Dancer::Serializer::XML 1.3138
-      Dancer::Serializer::YAML 1.3138
-      Dancer::Session 1.3138
-      Dancer::Session::Abstract 1.3138
-      Dancer::Session::Simple 1.3138
-      Dancer::Session::YAML 1.3138
-      Dancer::SharedData 1.3138
-      Dancer::Template 1.3138
-      Dancer::Template::Abstract 1.3138
-      Dancer::Template::Simple 1.3138
-      Dancer::Template::TemplateToolkit 1.3138
-      Dancer::Test 1.3138
-      Dancer::Timer 1.3138
+      Dancer 1.3140
+      Dancer::App 1.3140
+      Dancer::Config 1.3140
+      Dancer::Config::Object 1.3140
+      Dancer::Continuation 1.3140
+      Dancer::Continuation::Halted 1.3140
+      Dancer::Continuation::Route 1.3140
+      Dancer::Continuation::Route::ErrorSent 1.3140
+      Dancer::Continuation::Route::FileSent 1.3140
+      Dancer::Continuation::Route::Forwarded 1.3140
+      Dancer::Continuation::Route::Passed 1.3140
+      Dancer::Continuation::Route::Templated 1.3140
+      Dancer::Cookie 1.3140
+      Dancer::Cookies 1.3140
+      Dancer::Deprecation 1.3140
+      Dancer::Engine 1.3140
+      Dancer::Error 1.3140
+      Dancer::Exception 1.3140
+      Dancer::Exception::Base 1.3140
+      Dancer::Factory::Hook 1.3140
+      Dancer::FileUtils 1.3140
+      Dancer::GetOpt 1.3140
+      Dancer::HTTP 1.3140
+      Dancer::Handler 1.3140
+      Dancer::Handler::Debug 1.3140
+      Dancer::Handler::PSGI 1.3140
+      Dancer::Handler::Standalone 1.3140
+      Dancer::Hook 1.3140
+      Dancer::Hook::Properties 1.3140
+      Dancer::Logger 1.3140
+      Dancer::Logger::Abstract 1.3140
+      Dancer::Logger::Capture 1.3140
+      Dancer::Logger::Capture::Trap 1.3140
+      Dancer::Logger::Console 1.3140
+      Dancer::Logger::Diag 1.3140
+      Dancer::Logger::File 1.3140
+      Dancer::Logger::Note 1.3140
+      Dancer::Logger::Null 1.3140
+      Dancer::MIME 1.3140
+      Dancer::ModuleLoader 1.3140
+      Dancer::Object 1.3140
+      Dancer::Object::Singleton 1.3140
+      Dancer::Plugin 1.3140
+      Dancer::Plugin::Ajax 1.3140
+      Dancer::Renderer 1.3140
+      Dancer::Request 1.3140
+      Dancer::Request::Upload 1.3140
+      Dancer::Response 1.3140
+      Dancer::Route 1.3140
+      Dancer::Route::Cache 1.3140
+      Dancer::Route::Registry 1.3140
+      Dancer::Serializer 1.3140
+      Dancer::Serializer::Abstract 1.3140
+      Dancer::Serializer::Dumper 1.3140
+      Dancer::Serializer::JSON 1.3140
+      Dancer::Serializer::JSONP 1.3140
+      Dancer::Serializer::Mutable 1.3140
+      Dancer::Serializer::XML 1.3140
+      Dancer::Serializer::YAML 1.3140
+      Dancer::Session 1.3140
+      Dancer::Session::Abstract 1.3140
+      Dancer::Session::Simple 1.3140
+      Dancer::Session::YAML 1.3140
+      Dancer::SharedData 1.3140
+      Dancer::Template 1.3140
+      Dancer::Template::Abstract 1.3140
+      Dancer::Template::Simple 1.3140
+      Dancer::Template::TemplateToolkit 1.3140
+      Dancer::Test 1.3140
+      Dancer::Timer 1.3140
     requirements:
       Carp 0
       Cwd 0
@@ -995,18 +995,18 @@ DISTRIBUTIONS
       Task::Weaken 0
       Tie::ToObject 0.01
       namespace::clean 0.19
-  DateTime-1.19
-    pathname: D/DR/DROLSKY/DateTime-1.19.tar.gz
+  DateTime-1.20
+    pathname: D/DR/DROLSKY/DateTime-1.20.tar.gz
     provides:
-      DateTime 1.19
-      DateTime::Duration 1.19
-      DateTime::Helpers 1.19
-      DateTime::Infinite 1.19
-      DateTime::Infinite::Future 1.19
-      DateTime::Infinite::Past 1.19
-      DateTime::LeapSecond 1.19
-      DateTime::PP 1.19
-      DateTime::PPExtra 1.19
+      DateTime 1.20
+      DateTime::Duration 1.20
+      DateTime::Helpers 1.20
+      DateTime::Infinite 1.20
+      DateTime::Infinite::Future 1.20
+      DateTime::Infinite::Past 1.20
+      DateTime::LeapSecond 1.20
+      DateTime::PP 1.20
+      DateTime::PPExtra 1.20
     requirements:
       Carp 0
       DateTime::Locale 0.41
@@ -1014,7 +1014,7 @@ DISTRIBUTIONS
       ExtUtils::CBuilder 0
       Module::Build 0.28
       POSIX 0
-      Params::Validate 0.76
+      Params::Validate 1.03
       Scalar::Util 0
       Try::Tiny 0
       XSLoader 0
@@ -2873,27 +2873,27 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Moo-2.000001
-    pathname: H/HA/HAARG/Moo-2.000001.tar.gz
+  Moo-2.000002
+    pathname: H/HA/HAARG/Moo-2.000002.tar.gz
     provides:
       Method::Generate::Accessor undef
       Method::Generate::BuildAll undef
       Method::Generate::Constructor undef
       Method::Generate::DemolishAll undef
       Method::Inliner undef
-      Moo 2.000001
+      Moo 2.000002
       Moo::HandleMoose undef
       Moo::HandleMoose::FakeConstructor undef
       Moo::HandleMoose::FakeMetaClass undef
       Moo::HandleMoose::_TypeMap undef
       Moo::Object undef
-      Moo::Role 2.000001
+      Moo::Role 2.000002
       Moo::_Utils undef
       Moo::_mro undef
       Moo::_strictures undef
       Moo::sification undef
-      Sub::Defer 2.000001
-      Sub::Quote 2.000001
+      Sub::Defer 2.000002
+      Sub::Quote 2.000002
       oo undef
     requirements:
       Class::Method::Modifiers 1.1
