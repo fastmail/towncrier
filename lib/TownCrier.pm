@@ -39,7 +39,7 @@ get "/notices"                   => \&TownCrier::Handler::Site::notices;
 prefix "/admin";
 
 get  "/event" => \&TownCrier::Handler::Admin::Event::form;
-post "/event" => \&TownCrier::Handler::Admin::Event::post;
+post "/event" => \&TownCrier::Handler::Admin::Event::submit;
 
 prefix "/feed";
 

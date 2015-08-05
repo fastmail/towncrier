@@ -36,7 +36,7 @@ sub form {
     }
 }
 
-sub post {
+sub submit {
     my $db = var 'db';
 
     my @params = @{params()}{qw(service status message)};
