@@ -1,6 +1,6 @@
 package TownCrier::Model;
 
-use Moo;
+use Moose;
 use Search::GIN::Extract::Multiplex;
 use Search::GIN::Extract::Class;
 use Search::GIN::Extract::Callback;
