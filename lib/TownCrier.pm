@@ -2,6 +2,7 @@ package TownCrier;
 
 use Dancer;
 use Dancer::Plugin::Auth::Basic;
+use CHI;
 
 use TownCrier::Model;
 use TownCrier::Handler::Site;
@@ -31,60 +32,72 @@ hook before => sub {
         password => TOWNCRIER_ADMIN_PASSWORD;
 };
 
-get "/"                          => \&TownCrier::Handler::Site::index;
-get "/services/:service/?:date?" => \&TownCrier::Handler::Site::service;
-get "/groups/:group"             => \&TownCrier::Handler::Site::index;
-get "/notices"                   => \&TownCrier::Handler::Site::notices;
+my $cache = CHI->new(driver => 'FastMmap', cache_size => '1m');
+
+sub cached (&) {
+    my ($s) = @_;
+    return sub { $cache->compute(request->uri, undef, $s) };
+}
+
+sub cache_cleared (&) {
+    my ($s) = @_;
+    return sub { $cache->clear; $s->() };
+}
+
+get "/"                          => cached \&TownCrier::Handler::Site::index;
+get "/services/:service/?:date?" => cached \&TownCrier::Handler::Site::service;
+get "/groups/:group"             => cached \&TownCrier::Handler::Site::index;
+get "/notices"                   => cached \&TownCrier::Handler::Site::notices;
 
 prefix "/admin";
 
-get  "/event" => \&TownCrier::Handler::Admin::Event::form;
-post "/event" => \&TownCrier::Handler::Admin::Event::submit;
+get  "/event" => cached \&TownCrier::Handler::Admin::Event::form;
+post "/event" => cache_cleared \&TownCrier::Handler::Admin::Event::submit;
 
 prefix "/feed";
 
-get "/"                  => \&TownCrier::Handler::Feed::index;
-get "/services/:service" => \&TownCrier::Handler::Feed::service;
+get "/"                  => cached \&TownCrier::Handler::Feed::index;
+get "/services/:service" => cached \&TownCrier::Handler::Feed::service;
 
 prefix "/admin/api/v1";
 
-get  "/services"          => \&TownCrier::Handler::API::Service::list;
-post "/services"          => \&TownCrier::Handler::API::Service::post;
-get  "/services/:service" => \&TownCrier::Handler::API::Service::get;
-del  "/services/:service" => \&TownCrier::Handler::API::Service::delete;
+get  "/services"          => cached \&TownCrier::Handler::API::Service::list;
+post "/services"          => cache_cleared \&TownCrier::Handler::API::Service::post;
+get  "/services/:service" => cached \&TownCrier::Handler::API::Service::get;
+del  "/services/:service" => cache_cleared \&TownCrier::Handler::API::Service::delete;
 
-get  "/statuses"         => \&TownCrier::Handler::API::Status::list;
-post "/statuses"         => \&TownCrier::Handler::API::Status::post;
-get  "/statuses/:status" => \&TownCrier::Handler::API::Status::get;
-del  "/statuses/:status" => \&TownCrier::Handler::API::Status::delete;
+get  "/statuses"         => cached \&TownCrier::Handler::API::Status::list;
+post "/statuses"         => cache_cleared \&TownCrier::Handler::API::Status::post;
+get  "/statuses/:status" => cached \&TownCrier::Handler::API::Status::get;
+del  "/statuses/:status" => cache_cleared \&TownCrier::Handler::API::Status::delete;
 
-get  "/groups"                 => \&TownCrier::Handler::API::Group::list;
-post "/groups"                 => \&TownCrier::Handler::API::Group::post;
-get  "/groups/:group"          => \&TownCrier::Handler::API::Group::get;
-del  "/groups/:group"          => \&TownCrier::Handler::API::Group::delete;
-get  "/groups/:group/services" => \&TownCrier::Handler::API::Group::list_services;
+get  "/groups"                 => cached \&TownCrier::Handler::API::Group::list;
+post "/groups"                 => cache_cleared \&TownCrier::Handler::API::Group::post;
+get  "/groups/:group"          => cached \&TownCrier::Handler::API::Group::get;
+del  "/groups/:group"          => cache_cleared \&TownCrier::Handler::API::Group::delete;
+get  "/groups/:group/services" => cached \&TownCrier::Handler::API::Group::list_services;
 
-get  "/services/:service/events"        => \&TownCrier::Handler::API::Event::list;
-post "/services/:service/events"        => \&TownCrier::Handler::API::Event::post;
-get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
-del  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::delete;
+get  "/services/:service/events"        => cached \&TownCrier::Handler::API::Event::list;
+post "/services/:service/events"        => cache_cleared \&TownCrier::Handler::API::Event::post;
+get  "/services/:service/events/:event" => cached \&TownCrier::Handler::API::Event::get;
+del  "/services/:service/events/:event" => cache_cleared \&TownCrier::Handler::API::Event::delete;
 
-get  "/notices"         => \&TownCrier::Handler::API::Notice::list;
-post "/notices"         => \&TownCrier::Handler::API::Notice::post;
-get  "/notices/:notice" => \&TownCrier::Handler::API::Notice::get;
-del  "/notices/:notice" => \&TownCrier::Handler::API::Notice::delete;
+get  "/notices"         => cached \&TownCrier::Handler::API::Notice::list;
+post "/notices"         => cache_cleared \&TownCrier::Handler::API::Notice::post;
+get  "/notices/:notice" => cached \&TownCrier::Handler::API::Notice::get;
+del  "/notices/:notice" => cache_cleared \&TownCrier::Handler::API::Notice::delete;
 
 prefix "/api/v1";
 
-get  "/services"                        => \&TownCrier::Handler::API::Service::list;
-get  "/services/:service"               => \&TownCrier::Handler::API::Service::get;
-get  "/statuses"                        => \&TownCrier::Handler::API::Status::list;
-get  "/statuses/:status"                => \&TownCrier::Handler::API::Status::get;
-get  "/groups"                          => \&TownCrier::Handler::API::Group::list;
-get  "/groups/:group"                   => \&TownCrier::Handler::API::Group::get;
-get  "/services/:service/events"        => \&TownCrier::Handler::API::Event::list;
-get  "/services/:service/events/:event" => \&TownCrier::Handler::API::Event::get;
-get  "/notices"                         => \&TownCrier::Handler::API::Notice::list;
-get  "/notices/:notice"                 => \&TownCrier::Handler::API::Notice::get;
+get  "/services"                        => cached \&TownCrier::Handler::API::Service::list;
+get  "/services/:service"               => cached \&TownCrier::Handler::API::Service::get;
+get  "/statuses"                        => cached \&TownCrier::Handler::API::Status::list;
+get  "/statuses/:status"                => cached \&TownCrier::Handler::API::Status::get;
+get  "/groups"                          => cached \&TownCrier::Handler::API::Group::list;
+get  "/groups/:group"                   => cached \&TownCrier::Handler::API::Group::get;
+get  "/services/:service/events"        => cached \&TownCrier::Handler::API::Event::list;
+get  "/services/:service/events/:event" => cached \&TownCrier::Handler::API::Event::get;
+get  "/notices"                         => cached \&TownCrier::Handler::API::Notice::list;
+get  "/notices/:notice"                 => cached \&TownCrier::Handler::API::Notice::get;
 
 1;
