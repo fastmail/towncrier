@@ -10,6 +10,8 @@ use TownCrier::Handler::Admin;
 use TownCrier::Handler::Feed;
 use TownCrier::Handler::API;
 
+use List::Util qw(min);
+
 use constant TOWNCRIER_DATABASE =>
     $ENV{TOWNCRIER_DATABASE} // config->{towncrier}->{database} // "towncrier.sqlite";
 
@@ -36,7 +38,14 @@ my $cache = CHI->new(driver => 'FastMmap', cache_size => '1m');
 
 sub cached (&) {
     my ($s) = @_;
-    return sub { $cache->compute(request->uri, undef, $s) };
+    return sub {
+        my $expiry_key = "_expiry_".request->uri;
+        my $expires_in = $cache->get($expiry_key) // 1;
+        my $out = $cache->compute(request->uri, $expires_in, sub {
+            $cache->set($expiry_key, min($expires_in * 1.6, 3600));
+            $s->();
+        });
+    };
 }
 
 sub cache_cleared (&) {
