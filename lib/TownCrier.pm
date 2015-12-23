@@ -34,7 +34,7 @@ hook before => sub {
         password => TOWNCRIER_ADMIN_PASSWORD;
 };
 
-my $cache = CHI->new(driver => 'FastMmap', cache_size => '1m');
+my $cache = CHI->new(driver => 'FastMmap', cache_size => '10m');
 
 sub cached (&) {
     my ($s) = @_;
