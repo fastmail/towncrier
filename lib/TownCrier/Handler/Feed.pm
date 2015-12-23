@@ -43,6 +43,7 @@ sub service {
     create_feed(
         format => "RSS",
         title => "FastMail Status - ".$service->name,
+        link => request->uri_base . request->path,
         entries => [ map {
             my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp);
             {
