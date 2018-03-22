@@ -18,7 +18,7 @@ sub index {
         title => "FastMail Status",
         link => request->uri_base . request->path,
         entries => [ map {
-            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp);
+            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp . "Z");
             {
                 title => $_->service->name . " - " . $_->status->name,
                 issued => $dt,
@@ -45,7 +45,7 @@ sub service {
         title => "FastMail Status - ".$service->name,
         link => request->uri_base . request->path,
         entries => [ map {
-            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp);
+            my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp . "Z");
             {
                 title => $_->service->name . " - " . $_->status->name,
                 issued => $dt,
