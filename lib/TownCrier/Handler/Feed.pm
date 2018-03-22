@@ -17,6 +17,7 @@ sub index {
         format => "RSS",
         title => "FastMail Status",
         link => request->uri_base . request->path,
+        self_link => request->uri_base . request->path,
         entries => [ map {
             my $dt = DateTime::Format::ISO8601->parse_datetime($_->timestamp . "Z");
             {
