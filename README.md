@@ -10,13 +10,6 @@ A simple status dashboard.
 
 ## setup
 
-### docker
-
-Docker is the easiest way to get things running:
-
-```bash
-$ docker run --name=towncrier -d -p 8080:8080 robn/towncrier
-```
 ### Existing Perl with Carton
 
 If you have a system with a fairly recent Perl already, then Carton is your
