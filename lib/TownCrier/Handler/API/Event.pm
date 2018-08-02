@@ -13,12 +13,38 @@ sub list {
                                  { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } })} ] }
 }
 
+sub list_all {
+    my $db = var 'db';
+    { events => [ map { $_->rest }
+                    @{$db->match(class => "TownCrier::Data::Event",
+                                 { sort => sub { my ($a, $b) = @_; $b->ordered_compare($a) } })} ] }
+}
+
+sub _add_service_event {
+    my ($service, $status, $message, $timestamp) = @_;
+
+    my $event = TownCrier::Data::Event->new(
+        service => $service,
+        status => $status,
+        defined_kv(message => $message),
+        $timestamp ? (timestamp => DateTime::Format::ISO8601->parse_datetime(params->{timestamp})) : (),
+    );
+
+    if (!$service->event || $service->event->timestamp lt $event->timestamp) {
+        $service->event($event);
+        $service->status($status);
+    }
+
+    return $event;
+}
+
 sub post {
     my $db = var 'db';
 
     my $params = params();
     my $status_id = $params->{status};
     my $message = $params->{message};
+    my $timestamp = $params->{timestamp};
     return status 'bad_request' unless $status_id;
 
     my $service = $db->match(class => "TownCrier::Data::Service", id => params->{service})->[0];
@@ -27,17 +53,7 @@ sub post {
     my $status = $db->match(class => "TownCrier::Data::Status", id => $status_id)->[0];
     return status 'not_found' unless $status;
 
-    my $event = TownCrier::Data::Event->new(
-        service => $service,
-        status => $status,
-        defined_kv(message => $message),
-        params->{timestamp} ? (timestamp => DateTime::Format::ISO8601->parse_datetime(params->{timestamp})) : (),
-    );
-
-    if (!$service->event || $service->event->timestamp lt $event->timestamp) {
-        $service->event($event);
-        $service->status($status);
-    }
+    my $event = _add_service_event($service, $status, $message, $timestamp);
 
     $db->txn_do(sub {
         $db->store($event);
@@ -46,6 +62,31 @@ sub post {
 
     status 'created';
     return $event->rest;
+}
+
+sub post_all {
+    my $db = var 'db';
+
+    my $params = params();
+    my $status_id = $params->{status};
+    my $message = $params->{message};
+    my $timestamp = $params->{timestamp};
+    return status 'bad_request' unless $status_id;
+
+    my $status = $db->match(class => "TownCrier::Data::Status", id => $status_id)->[0];
+    return status 'not_found' unless $status;
+
+    my @services = @{$db->match(class => "TownCrier::Data::Service")};
+
+    my @events = map { _add_service_event($_, $status, $message, $timestamp) } @services;
+
+    $db->txn_do(sub {
+        $db->store($_) for @events;
+        $db->store($_) for @services;
+    });
+
+    status 'created';
+    return { events => [ map { $_->rest } @events ] };
 }
 
 sub get {
