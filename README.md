@@ -37,6 +37,9 @@ Go and read the docs for Carton and Dancer::Deployment.
 Get Perl, get all the dependencies, run the program. This is the developer
 option, and you're expected to know what you're doing :)
 
+Expect to install the development packages for `libxml2` and `expat` for your
+distribution as well as `make` and `gcc`.
+
 ### first run
 
 You need to install the initial statuses and services. Look at bin/fixtures.sh
