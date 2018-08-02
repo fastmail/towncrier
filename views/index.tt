@@ -74,6 +74,7 @@
     </thead>
     <tbody>
         <% FOR e IN events %>
+        <% IF e.message %>
         <tr>
         <td class="service"><a href="<% e.service.url %>"><% e.service.name %></a></td>
         <td class="time">
@@ -85,6 +86,7 @@
         <td class="status highlight" title="<% e.status.name %>"><i class="status-icon status-<% e.status.id %> icon-<% e.status.icon %>"></i></td>
         <td><% e.message %></td>
         </tr>
+        <% END %>
         <% END %>
     </tbody>
     </table>

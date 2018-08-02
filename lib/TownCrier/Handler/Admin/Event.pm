@@ -2,6 +2,7 @@ package TownCrier::Handler::Admin::Event;
 
 use TownCrier::Data;
 use Dancer ':syntax';
+use Defined::KV;
 
 use constant TOWNCRIER_TITLE =>
     $ENV{TOWNCRIER_TITLE} // config->{towncrier}->{title} // "";
@@ -39,11 +40,13 @@ sub form {
 sub submit {
     my $db = var 'db';
 
+    my $params = params();
+    my $service_id = $params->{service};
+    my $status_id = $params->{status};
+    my $message = $params->{message};
     my @params = @{params()}{qw(service status message)};
-    return form unless @params == 3;
-    my ($service_id, $status_id, $message) = @params;
 
-    return form warning => "No message provided" unless length $message;
+    return form unless $service_id && $status_id;
 
     my $service = $db->match(class => "TownCrier::Data::Service", id => $service_id)->[0];
     return form warning => "Service '$service_id' not found" unless $service;
@@ -54,7 +57,7 @@ sub submit {
     my $event = TownCrier::Data::Event->new(
         service => $service,
         status => $status,
-        message => $message,
+        defined_kv(message => $message),
     );
 
     if (!$service->event || $service->event->timestamp lt $event->timestamp) {
