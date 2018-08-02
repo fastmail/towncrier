@@ -19,7 +19,7 @@
   </div>
   <div class='pure-g'>
     <div class='pure-u-1 pure-u-md-1-1'>
-      <label for='message'>Message</label>
+      <label for='message'>Message (optional)</label>
       <input class='pure-input-1' type='text' name='message' id='message'>
     </div>
   </div>

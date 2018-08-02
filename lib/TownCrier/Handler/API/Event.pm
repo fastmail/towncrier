@@ -2,6 +2,7 @@ package TownCrier::Handler::API::Event;
 
 use TownCrier::Data;
 use Dancer qw(params status var);
+use Defined::KV;
 
 sub list {
     my $db = var 'db';
@@ -15,9 +16,10 @@ sub list {
 sub post {
     my $db = var 'db';
 
-    my @params = @{params()}{qw(status message)};
-    return status 'bad_request' unless @params == 2;
-    my ($status_id, $message) = @params;
+    my $params = params();
+    my $status_id = $params->{status};
+    my $message = $params->{message};
+    return status 'bad_request' unless $status_id;
 
     my $service = $db->match(class => "TownCrier::Data::Service", id => params->{service})->[0];
     return status 'not_found' unless $service;
@@ -28,7 +30,7 @@ sub post {
     my $event = TownCrier::Data::Event->new(
         service => $service,
         status => $status,
-        message => $message,
+        defined_kv(message => $message),
         params->{timestamp} ? (timestamp => DateTime::Format::ISO8601->parse_datetime(params->{timestamp})) : (),
     );
 

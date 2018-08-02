@@ -9,7 +9,7 @@ with qw(KiokuDB::Role::ID KiokuDB::Role::UUIDs TownCrier::Role::Indexable TownCr
 
 has service => ( is => 'rw', isa => class_type("TownCrier::Data::Service"), required => 1 );
 has status => ( is => 'rw', isa => class_type("TownCrier::Data::Status"), required => 1 );
-has message => ( is => 'rw', isa => Str, required => 1);
+has message => ( is => 'rw', isa => Str, default => sub { '' } );
 
 has timestamp => ( is => 'ro', isa => class_type("DateTime"), default => sub { DateTime->now } );
 
