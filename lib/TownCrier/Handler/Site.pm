@@ -96,6 +96,7 @@ sub index {
     }
 
     @all_events = sort { $b->ordered_compare($a) } @all_events;
+    @all_events = grep { $_->message } @all_events;
     @all_events = splice @all_events, 0, 10;
 
     my $notices = [ grep { !$_->expired }
@@ -140,6 +141,7 @@ sub service {
     $service->status($default_status) unless $service->status;
 
     @$events = grep { $_->timestamp->ymd eq $date->ymd } @$events if $date;
+    @$events = grep { $_->message} @$events;
 
     @$events = splice @$events, 0, 5;
 
