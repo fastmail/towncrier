@@ -94,6 +94,9 @@ post "/services/:service/events"        => cache_cleared \&TownCrier::Handler::A
 get  "/services/:service/events/:event" => cached \&TownCrier::Handler::API::Event::get;
 del  "/services/:service/events/:event" => cache_cleared \&TownCrier::Handler::API::Event::delete;
 
+get  "/events" => cached \&TownCrier::Handler::API::Event::list_all;
+post "/events" => cache_cleared \&TownCrier::Handler::API::Event::post_all;
+
 get  "/notices"         => cached \&TownCrier::Handler::API::Notice::list;
 post "/notices"         => cache_cleared \&TownCrier::Handler::API::Notice::post;
 get  "/notices/:notice" => cached \&TownCrier::Handler::API::Notice::get;
