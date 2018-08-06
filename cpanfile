@@ -2,6 +2,7 @@ requires 'Plack';
 requires 'Dancer';
 requires 'Dancer::Plugin::Auth::Basic';
 requires 'Dancer::Plugin::Feed';
+requires 'Defined::KV';
 requires 'CHI';
 requires 'Cache::FastMmap';
 requires 'Moo';
