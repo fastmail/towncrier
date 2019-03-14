@@ -19,7 +19,7 @@ sub timesince {
     my $diff = $now->epoch - $dt->epoch;
 
     return
-        $diff < 60   ? "less then a minute ago"  :
+        $diff < 60   ? "less than a minute ago"  :
         $diff < 150  ? "a couple of minutes ago" :
         $diff < 300  ? "a few minutes ago"       :
         $diff < 390  ? "about 5 minutes ago"     :
