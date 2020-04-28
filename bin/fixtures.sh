@@ -18,3 +18,4 @@ curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F id=mail-access -
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F id=calendar -F order=45 -F name='Calendar (CalDAV)' -F description='Calendar access via the CalDAV protocol'
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F id=file-storage -F order=50 -F name='File storage (FTP/DAV)' -F description='File storage access via the FTP and WebDAV protocols'
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F id=contacts -F order=70 -F name='Contacts (LDAP)' -F description='Contacts access via the LDAP protocol'
+curl -u $AUTH -t http://localhost:3000/admin/api/v1/services -F id=support -F order=80 -F description='Fastmail Support System'
