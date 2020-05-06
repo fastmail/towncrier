@@ -14,3 +14,7 @@ curl -u $AUTH -i http://localhost:3000/admin/api/v1/groups -F name=Primary -F de
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=first -F group=primary -F description='My website' -F order=10
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=second -F group=primary -F description='My website' -F order=30
 curl -u $AUTH -i http://localhost:3000/admin/api/v1/services -F name=third -F group=primary -F description='My website' -F order=20
+
+# Add an events
+curl -u $AUTH -i http://localhost:3000/admin/api/v1/services/first/events -F status=up -F message='Adding an event via curl to notify the service is up'
+
