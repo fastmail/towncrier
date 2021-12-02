@@ -1,4 +1,4 @@
-# ![](https://raw.githubusercontent.com/robn/towncrier/master/public/images/bell/bell-48.png) towncrier
+# ![](https://raw.githubusercontent.com/fastmail/towncrier/master/public/images/bell/bell-48.png) towncrier
 
 A simple status dashboard.
 
@@ -16,7 +16,7 @@ If you have a system with a fairly recent Perl already, then Carton is your
 next best choice:
 
 ```bash
-$ git clone http://github.com/robn/towncrier.git
+$ git clone http://github.com/fastmail/towncrier.git
 $ cd towncrier
 $ curl -L http://cpanmin.us | perl - Carton
 $ carton install --deployment
@@ -42,7 +42,7 @@ There's some knobs you can twiddle in config.yml.
 
 ## demo
 
-FastMail are using this. See http://www.fastmailstatus.com/
+Fastmail are using this. See http://www.fastmailstatus.com/
 
 ## credits and license
 
