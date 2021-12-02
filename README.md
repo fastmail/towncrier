@@ -42,7 +42,7 @@ There's some knobs you can twiddle in config.yml.
 
 ## demo
 
-FastMail are using this. See http://www.fastmailstatus.com/
+Fastmail are using this. See http://www.fastmailstatus.com/
 
 ## credits and license
 
