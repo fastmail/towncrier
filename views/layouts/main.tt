@@ -36,7 +36,7 @@
     <div id="footer">
       <a href="/admin/event">New event...</a>
       <div id="powered">
-        <a href="https://github.com/robn/towncrier"><img src="/images/bell/bell-26.png"/>towncrier</a>
+        <a href="https://github.com/fastmail/towncrier"><img src="/images/bell/bell-26.png"/>towncrier</a>
       </div>
     </div>
   </body>
